@@ -31,14 +31,15 @@ public class ArrayToBST {
 			root.right = insertReccursion(root.right, chr);
 		return root;
 	}
-	public void inorder() {
-		inorderReccursion(root);
+	public void inorder(char[] c) {
+		inorderReccursion(root,c);
 	}
-	void inorderReccursion(Node root) {
+	void inorderReccursion(Node root,char[] c) {
 		if (root != null) {
-			inorderReccursion(root.left);                  
+			inorderReccursion(root.left,c);  
+			root.frq=(int)(c.length/root.frq);
 			System.out.print("\t"+root.chr+":"+root.frq);
-			inorderReccursion(root.right);
+			inorderReccursion(root.right,c);
 		}
 	}
     public Node search(Node root,char c) 
@@ -66,11 +67,10 @@ public class ArrayToBST {
 		for(int i=0;i<c.length;i++)
 	{  
 		if(search(root,c[i])==null)
-		{   System.out.println(c[i]);
+		{   
 			temp=insert(c[i]);
 		}
 		else {
-			System.out.println(c[i]);
 		 temp=search(root,c[i]);
 		 temp.frq+=1;
 		}
@@ -81,6 +81,6 @@ public class ArrayToBST {
 		char[] a= {'m','a','l','a','y','a','l','a','m'};
 		ArrayToBST bst1=new ArrayToBST();
 		bst1.readArray(a);
-		bst1.inorder();
+		bst1.inorder(a);
 	}
 }
