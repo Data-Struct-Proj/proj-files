@@ -1,26 +1,22 @@
-package proj;
-
+//package
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Encode {
-	int count = 0;
-
+    int count = 0;
+	int i=0;
+	Node[] cc=new Node[100];
 	public boolean isAlpha(char s) {
 		return Character.isLetter(s);
 	}
-
+	
 	@SuppressWarnings("resource")
 	public char[] read(String loc) throws IOException {
 		BufferedReader reader;
-
 		char[] a = new char[1000];
-
 		reader = new BufferedReader(new FileReader(loc));
-
 		int i;
-
 		while ((i = reader.read()) != -1) {
 			char ch = (char) i;
 			if (isAlpha(ch)) {
@@ -45,13 +41,13 @@ public class Encode {
 		}
 	}
 
-	Node root;
+    Node root;
 
 	public Node insert(char chr) {
 		return root = insertReccursion(root, chr);
 	}
 
-	Node insertReccursion(Node root, char chr) {
+	private Node insertReccursion(Node root, char chr) {
 		if (root == null) {
 			root = new Node(1, chr);
 			return root;
@@ -69,13 +65,32 @@ public class Encode {
 		inorderReccursion(root);
 	}
 
-	void inorderReccursion(Node root) {
+	private void inorderReccursion(Node root) {
 		if (root != null) {
 			inorderReccursion(root.left);
-			root.frq = (int) (count / root.frq);
+			root.frq = count / root.frq;
 			System.out.print(root.chr + ":" + root.frq + " ");
 			inorderReccursion(root.right);
 		}
+	}
+
+	public Node[] convertToArray()
+	{
+		
+		Node[] temp=traverse(root);
+		Node[]a = new Node[i];
+		for(int j=0;j<i;j++) a[j]=temp[j];
+		return a;
+	}
+	
+	private Node[] traverse(Node root) {
+		if (root != null) {
+			traverse(root.left);
+			root.frq = count / root.frq;
+			cc[i++]=root;
+			traverse(root.right);
+		}
+		return cc;
 	}
 
 	public Node search(Node root, char c) {
@@ -113,8 +128,13 @@ public class Encode {
 		Encode n = new Encode();
 		String loc = "/Users/rohith/Desktop/trial.txt";
 		n.readArray(n.read(loc));
-		n.inorder();
-
+		//n.inorder();
+		Node[] a=n.convertToArray();
+        for(int ii=0;ii<a.length;ii++)
+        {
+        	System.out.print(a[ii].chr);
+        }
+        
 	}
 
 }
