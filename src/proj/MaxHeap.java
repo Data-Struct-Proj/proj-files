@@ -131,7 +131,7 @@ public class MaxHeap  {
 	  public void printCode(Node root, String s) 
 	    { 
 			
-	        if (root.left == null && root.right == null && Character.isLetter(root.chr)) { 
+	        if (root.left == null && root.right == null && (Character.isLetter(root.chr)||root.chr==' '||root.chr=='\n')) { 
 	  
 	            // c is the character in the node 
 	            System.out.println(root.chr + ":" + s); 

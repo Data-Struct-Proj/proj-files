@@ -24,14 +24,14 @@ public class Read {
 		int r,it;	
 		while ((it = iterator.read()) != -1) {
 			char ch1 = (char) it;
-			if (isAlpha(ch1)) {
+			if (isAlpha(ch1) || ch1 == ' ' || ch1=='\n') {
 				c++;
 			}
 		}
 		char[] a = new char[c];
 		while ((r = reader.read()) != -1) {
 			char ch = (char) r;
-			if (isAlpha(ch)) {
+			if (isAlpha(ch)|| ch == ' ' || ch=='\n') {
 				a[count++] = Character.toLowerCase(ch);
 			}
 		}
