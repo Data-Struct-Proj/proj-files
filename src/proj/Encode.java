@@ -111,7 +111,7 @@ public class Encode {
 
 	public static void main(String[] args) throws IOException {
 		Encode n = new Encode();
-		String loc = "/Users/rohith/Desktop/trial.txt";
+		String loc = "C:\\Users\\User\\Desktop\\projecttext.txt";
 		n.readArray(n.read(loc));
 		n.inorder();
 
