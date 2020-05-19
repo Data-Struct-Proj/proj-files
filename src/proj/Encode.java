@@ -1,12 +1,12 @@
-//package end_proj;
+package end_proj;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+
 public class Encode {
     int count,c = 0;
 	int i=0;
-	// Its a set so max will be 26 
 	Node[] cc=new Node[30];
 	
 	public boolean isAlpha(char s) {
@@ -15,15 +15,14 @@ public class Encode {
 	
 	@SuppressWarnings("resource")
 	public char[] read(String loc) throws IOException {
-		BufferedReader reader;
-		BufferedReader reader1;
+		BufferedReader reader, iterator;
 		
 		reader = new BufferedReader(new FileReader(loc));
-		reader1 = new BufferedReader(new FileReader(loc));
+		iterator = new BufferedReader(new FileReader(loc));
 		
-		int r,r1;	
-		while ((r1 = reader1.read()) != -1) {
-			char ch1 = (char) r1;
+		int r,it;	
+		while ((it = iterator.read()) != -1) {
+			char ch1 = (char) it;
 			if (isAlpha(ch1)) {
 				c++;
 			}
@@ -38,7 +37,7 @@ public class Encode {
 		return a;
 	}
 
-	class Node {
+	 class Node {
 		int frq;
 		char chr;
 		int key;
@@ -134,17 +133,24 @@ public class Encode {
 			}
 		}
 	}
+	public  Node[] fromBSTtoNodeArray(String a) throws IOException {
+		readArray(read(a));
+		return convertToArray();
+	}
+	
+	public MaxHeap fromNodeArraytoMaxHeap(Node[] a) {
+		MaxHeap A = new MaxHeap(a.length);
+		A.fromNodeArray(a);
+		return A;
+	}
 
 	public static void main(String[] args) throws IOException {
 		Encode n = new Encode();
 		String loc =  "/Users/rohith/Desktop/trial.txt";
-		n.readArray(n.read(loc));
-		//n.inorder();
-		Node[] a=n.convertToArray();
-        for(int ii=0;ii<a.length;ii++)
-        {
-        	System.out.print(a[ii].chr);
-        }
+		Node[] a = n.fromBSTtoNodeArray(loc);
+		MaxHeap A = n.fromNodeArraytoMaxHeap(a);
+		A.print();
+		
 	}
 
 }
