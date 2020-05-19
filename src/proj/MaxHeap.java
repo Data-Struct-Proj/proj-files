@@ -1,13 +1,15 @@
-package proj;
+package end_proj;
+
+
 public class MaxHeap  {
 	
-	class Node {
-		int frq;
+   class Node {
+		double frq;
 		char chr;
 		int key;
 		Node left, right;
 
-		public Node(int f, char c) {
+		public Node(double f, char c) {
 			frq = f;
 			chr = c;
 			Character c1 = Character.valueOf(c);
@@ -18,7 +20,7 @@ public class MaxHeap  {
 	
 	private Node[] heap;
 
-	private int hSize;
+	public int hSize;
 	
 	public MaxHeap(int size) {
 		heap = new Node[size];
@@ -32,7 +34,7 @@ public class MaxHeap  {
 	// Right child...
 	public int right(int i) {  return 2*i + 2; }
 	// Data at node i ...
-	public int data(int i) { return heap[i].frq; }
+	public double data(int i) { return heap[i].frq; }
 	
 	public void swap(int a, int b) {
 		Node t = heap[a]; 
@@ -54,27 +56,10 @@ public class MaxHeap  {
 			p = parent(c);	
 		}
 	}
-	public void insert(int d,char cc) {
-		Node e = new Node(d,cc);
-		heap[++hSize] = e;
-		
-		int c = hSize;
-		int p = parent(c);
-		
-		while(p >= 0 && c > 0) {
-			if(heap[p].frq < heap[c].frq)
-				swap(p,c);
-			c = p;
-			p = parent(c);	
-		}
-	}
-	
 
 	public Node maxExtract() {
-		Node root=heap[0];
-		Node max = root;
-		
-		root = heap[hSize--];
+		Node max = heap[0];
+		heap[0] = heap[hSize--];
 		maxHeapify(0);
 		
 		return max;
@@ -89,12 +74,12 @@ public class MaxHeap  {
 		int sIndex = n;
 		
 		// Checking the left child ...
-		if(large.frq < heap[l].frq) {
+		if(l<hSize+1 && large.frq < heap[l].frq) {
 			large = heap[l];
 			sIndex = l;
 		}
 		// Checking the right child...
-		if(large.frq < heap[r].frq) {
+		if(r<hSize+1 && large.frq < heap[r].frq) {
 			large = heap[r];
 			sIndex = r;
 		}
@@ -119,38 +104,46 @@ public class MaxHeap  {
         } 
     }
 	
-	public void inorder(int root) {
-		if(root > hSize) return;
-		
-		inorder(left(root));
-		System.out.print(data(root) +" ");
-		inorder(right(root));	
-		
-	}
 	//end_proj Node is a different thing so we use that here.
-	public void fromNodeArray(end_proj.Encode.Node[] a) {
+	public void fromNodeArray(end_proj.Read.Node[] a) {
 		for(int i=0;i<a.length;i++) {
 			Node t = new Node(a[i].frq,a[i].chr);
 			insertN(t);
 		}
 		
 	}
+	Node r =null;
+	public void algo(double d) {
 	
-public static void main(String[] args) throws Exception {
-		
-		MaxHeap maxHeap = new MaxHeap(15);
-		
-		    maxHeap.insert(5,'a'); 
-	        maxHeap.insert(3,'b'); 
-	        maxHeap.insert(17,'c'); 
-	        maxHeap.insert(10,'d'); 
-	        maxHeap.insert(84,'e'); 
-	        maxHeap.insert(19,'f'); 
-	        maxHeap.insert(6,'g'); 
-	        maxHeap.insert(22,'h'); 
-	        maxHeap.insert(9,'i');
-	        maxHeap.print(); 
-	}
-}
+			while(hSize>0) {
+				Node a = maxExtract();
+				Node b = maxExtract();
+				Node P = new Node(d/((d/a.frq)+(d/b.frq)),(a.chr));
+				//System.out.println(a.chr+" "+b.chr);
+				P.left = a;
+				P.right = b;
+				r = P;
+				insertN(P);
+			}
+		 printCode(r, "");	
+		}
+	  BSTNode f = new BSTNode();
+	  public void printCode(Node root, String s) 
+	    { 
+			
+	        if (root.left == null && root.right == null && Character.isLetter(root.chr)) { 
+	  
+	            // c is the character in the node 
+	            System.out.println(root.chr + ":" + s); 
+	            f.insert(root.chr, s);
+	            return;
+	        } 
+	        
+	        printCode(root.left, s + "0"); 
+	        printCode(root.right, s + "1"); 
+	    } 
+	
+	 		}
+
 
 
