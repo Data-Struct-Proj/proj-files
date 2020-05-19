@@ -1,12 +1,14 @@
-//package
+//package end_proj;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Encode {
-    int count = 0;
+    int count,c = 0;
 	int i=0;
-	Node[] cc=new Node[100];
+	// Its a set so max will be 26 
+	Node[] cc=new Node[30];
+	
 	public boolean isAlpha(char s) {
 		return Character.isLetter(s);
 	}
@@ -14,11 +16,21 @@ public class Encode {
 	@SuppressWarnings("resource")
 	public char[] read(String loc) throws IOException {
 		BufferedReader reader;
-		char[] a = new char[1000];
+		BufferedReader reader1;
+		
 		reader = new BufferedReader(new FileReader(loc));
-		int i;
-		while ((i = reader.read()) != -1) {
-			char ch = (char) i;
+		reader1 = new BufferedReader(new FileReader(loc));
+		
+		int r,r1;	
+		while ((r1 = reader1.read()) != -1) {
+			char ch1 = (char) r1;
+			if (isAlpha(ch1)) {
+				c++;
+			}
+		}
+		char[] a = new char[c];
+		while ((r = reader.read()) != -1) {
+			char ch = (char) r;
 			if (isAlpha(ch)) {
 				a[count++] = Character.toLowerCase(ch);
 			}
@@ -76,7 +88,6 @@ public class Encode {
 
 	public Node[] convertToArray()
 	{
-		
 		Node[] temp=traverse(root);
 		Node[]a = new Node[i];
 		for(int j=0;j<i;j++) a[j]=temp[j];
@@ -126,7 +137,7 @@ public class Encode {
 
 	public static void main(String[] args) throws IOException {
 		Encode n = new Encode();
-		String loc = "C:\\Users\\User\\Desktop\\projecttext.txt";
+		String loc =  "/Users/rohith/Desktop/trial.txt";
 		n.readArray(n.read(loc));
 		//n.inorder();
 		Node[] a=n.convertToArray();
@@ -134,7 +145,6 @@ public class Encode {
         {
         	System.out.print(a[ii].chr);
         }
-        
 	}
 
 }

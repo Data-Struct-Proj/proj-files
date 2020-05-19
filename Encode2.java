@@ -127,8 +127,8 @@ public class Encode2 {
         for(int ii=0;ii<i;ii++)
         {
         	System.out.print(a[ii].chr);
+            
         }
-        
-	}
+	} 
 
 }
