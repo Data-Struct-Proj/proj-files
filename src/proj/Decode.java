@@ -1,6 +1,8 @@
 package end_proj;
 import java.io.*;
 
+import end_proj.HuffmanMaxHeap.Node;
+
 public class Decode {
         String Out;
     	public String read(String loc) throws IOException {
@@ -23,8 +25,8 @@ public class Decode {
     	}
   
     	
-	public void decode(String S,end_proj.MaxHeap.Node[] heap) {
-		end_proj.MaxHeap.Node current = heap[0];
+	public void decode(String S,end_proj.HuffmanMaxHeap.Node[] heap) {
+		end_proj.HuffmanMaxHeap.Node current = heap[0];
 		String o ="";
 		
 	    while (!S.isEmpty()){
@@ -44,14 +46,17 @@ public class Decode {
 	    Out=o;
 	}
  
-        
+    public void decodeFile(Node[] a) throws IOException {
+    	 decode(read("/Users/rohith/Desktop/Output_Encoded.txt"),a);
+ 	     write("/Users/rohith/Desktop/Output_Decoded.txt");
+    }
 	public static void main(String[] args) throws IOException {
 		Read n = new Read();
 		String loc = "/Users/rohith/Desktop/trial.txt";
-	    end_proj.MaxHeap.Node[] a = n.Encode(loc);
+	    end_proj.HuffmanMaxHeap.Node[] a = n.Encode(loc);
 	    Decode f = new Decode();
-	    f.decode(f.read("/Users/rohith/Desktop/Output_Encoded.txt"),a);
-	    f.write("/Users/rohith/Desktop/Output_Decoded.txt");
+	    f.decodeFile(a);
+	   
 
 	}
 }

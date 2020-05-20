@@ -5,11 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Read {
-	static int count;
+    int count;
 	int c = 0;
 	int i = 0;
 	Node[] cc = new Node[30];
-	public end_proj.MaxHeap.Node[] h;
+	public end_proj.HuffmanMaxHeap.Node[] h;
 
 	public boolean isAlpha(char s) {
 		return Character.isLetter(s)|| s == ' ' || s == '\n';
@@ -167,15 +167,15 @@ public class Read {
 		return convertToArray();
 	}
 
-	public MaxHeap fromNodeArraytoMaxHeap(Node[] a) {
-		MaxHeap A = new MaxHeap(a.length);
+	public HuffmanMaxHeap fromNodeArraytoMaxHeap(Node[] a) {
+		HuffmanMaxHeap A = new HuffmanMaxHeap(a.length);
 		A.fromNodeArray(a);
 		return A;
 	}
 
-	public end_proj.MaxHeap.Node[] Encode(String loc) throws IOException {
+	public end_proj.HuffmanMaxHeap.Node[] Encode(String loc) throws IOException {
 		Node[] a = fromBSTtoNodeArray(loc);
-		MaxHeap A = fromNodeArraytoMaxHeap(a);
+		HuffmanMaxHeap A = fromNodeArraytoMaxHeap(a);
 		h = A.algo(count);
 		BSTNode f = A.f;
 		f.encode(read(loc), "/Users/rohith/Desktop/Output_Encoded.txt");
