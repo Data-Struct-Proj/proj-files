@@ -4,34 +4,22 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Read {
-	static int count;
-	int c = 0;
-	int i = 0;
-	Node[] cc = new Node[30];
-	public end_proj.MaxHeap.Node[] h;
-
+public class Encode2 {
+    int count = 0;
+	int i=0;
+	Node[] cc=new Node[100];
 	public boolean isAlpha(char s) {
-		return Character.isLetter(s)|| s == ' ' || s == '\n';
+		return Character.isLetter(s);
 	}
-
+	
 	@SuppressWarnings("resource")
 	public char[] read(String loc) throws IOException {
-		BufferedReader reader, iterator;
-
+		BufferedReader reader;
+		char[] a = new char[1000];
 		reader = new BufferedReader(new FileReader(loc));
-		iterator = new BufferedReader(new FileReader(loc));
-
-		int r, it;
-		while ((it = iterator.read()) != -1) {
-			char ch1 = (char) it;
-			if (isAlpha(ch1) ) {
-				c++;
-			}
-		}
-		char[] a = new char[c];
-		while ((r = reader.read()) != -1) {
-			char ch = (char) r;
+		int i;
+		while ((i = reader.read()) != -1) {
+			char ch = (char) i;
 			if (isAlpha(ch)) {
 				a[count++] = Character.toLowerCase(ch);
 			}
@@ -40,7 +28,7 @@ public class Read {
 	}
 
 	class Node {
-		double frq;
+		int frq;
 		char chr;
 		int key;
 		Node left, right;
@@ -54,7 +42,7 @@ public class Read {
 		}
 	}
 
-	Node root;
+    Node root;
 
 	public Node insert(char chr) {
 		return root = insertReccursion(root, chr);
@@ -87,48 +75,23 @@ public class Read {
 		}
 	}
 
-	public Node[] convertToArray() {
-		Node[] temp = traverse(root);
-		Node[] a = new Node[i];
-		for (int j = 0; j < i; j++)
-			a[j] = temp[j];
+	public Node[] convertToArray()
+	{
+		
+		Node[] temp=traverse(root);
+		Node[]a = new Node[i];
+		for(int j=0;j<i;j++) a[j]=temp[j];
 		return a;
 	}
-
+	
 	private Node[] traverse(Node root) {
 		if (root != null) {
 			traverse(root.left);
-			root.frq = (count / root.frq);
-			cc[i++] = root;
+			root.frq = count / root.frq;
+			cc[i++]=root;
 			traverse(root.right);
 		}
 		return cc;
-	}
-
-	public double max() {
-		return maxValue(root);
-	}
-
-	public double min() {
-		return minValue(root);
-	}
-
-	public double maxValue(Node node) {
-		/* loop down to find the rightmost leaf */
-		Node current = node;
-		while (current.right != null)
-			current = current.right;
-
-		return (current.frq);
-	}
-
-	public double minValue(Node node) {
-		/* loop down to find the rightmost leaf */
-		Node current = node;
-		while (current.left != null)
-			current = current.left;
-
-		return (current.frq);
 	}
 
 	public Node search(Node root, char c) {
@@ -162,25 +125,17 @@ public class Read {
 		}
 	}
 
-	public Node[] fromBSTtoNodeArray(String a) throws IOException {
-		readArray(read(a));
-		return convertToArray();
+	public static void main(String[] args) throws IOException {
+		Encode2 n = new Encode2();
+		String loc = "/Users/rohith/Desktop/trial.txt";
+		n.readArray(n.read(loc));
+		//n.inorder();
+		Node[] a=n.convertToArray();
+        for(int ii=0;ii<a.length;ii++)
+        {
+        	System.out.print(a[ii].chr);
+        }
+        
 	}
 
-	public MaxHeap fromNodeArraytoMaxHeap(Node[] a) {
-		MaxHeap A = new MaxHeap(a.length);
-		A.fromNodeArray(a);
-		return A;
-	}
-
-	public end_proj.MaxHeap.Node[] Encode(String loc) throws IOException {
-		Node[] a = fromBSTtoNodeArray(loc);
-		MaxHeap A = fromNodeArraytoMaxHeap(a);
-		h = A.algo(count);
-		BSTNode f = A.f;
-		f.encode(read(loc), "/Users/rohith/Desktop/Output_Encoded.txt");
-		return h;
-	}
 }
-
- 
