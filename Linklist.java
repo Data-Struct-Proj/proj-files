@@ -1,88 +1,74 @@
-package linklists;
+package projects;
 
-public class Linklist {
-	public class Node {
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class linklist {
+
+	class Node {
 		int data;
 		Node next;
-	};
-	Node start; 
- 
-	public void append(int data) {
-		Node node = new Node(); 
-		node.data = data;
-		node.next = null;
+
+	public Node(int d) { 
+			data = d;
+			next = null;
+		}
+	}
+
+	Node start = null;
+	Node last = null;
+
+	public void append(int x) { 
 		if (start == null) { 
-			start = node;
+			start = last = new Node(x);
+			
 		}
-		else {
-			Node n = start;
-			while (n.next != null) {  
-				n = n.next;
-			}
-			n.next = node;
+		else { 
+			last.next = new Node(x);
+			last = last.next;
 		}
 	}
 
-	public void insert(int index, int data) {
-		Node node = new Node();
-		node.data = data;
-		node.next = null;
 
-		if (index == 0) {
-			node.next = start;
-			start = node;
-		} else {
-			Node n = start;
-			for (int i = 0; i < index - 1; i++) {
-				n = n.next;
-			}
-			node.next = n.next;
-			n.next = node;
-		}
+
+	public boolean isEmpty() { 
+		return (start == null);
 	}
 
-	public void delete(int index) {
-		if (index == 0) {
-			start = start.next;
-		} 
-		else {
-			Node n = start;
-			Node n1 = null;
-			for (int i = 0; i < index - 1; i++) {
-				n = n.next;
-			}
-			n1 = n.next;
-			n.next = n1.next;
-			n1 = null;
+	public int com(){
+		int count=0;
+		for(Node p = start; p!= null; p = p.next) { 
+			
+			if(p.data==32||p.data==10||p.data>=65&&p.data<=90||p.data>=97&&p.data<=122) {
+				count=(count+1);	
 		}
+		
+	}
+		
+		return count;
+	}
+	public float com1(){
+		float count=0;
+		for(Node p = start; p!= null; p = p.next) { 
+			
+					count=(count+1);	
+		
+		
+	}
+		count=count/8;
+		return count;
+	}
+	public void store() throws IOException {
+		 BufferedWriter g =new BufferedWriter(new FileWriter("C:\\Users\\srina\\Desktop\\taylorswift.txt")) ;
+		for(Node p = start; p!= null; p = p.next) {
+	    g.write(p.data);
+		}
+		g.close();
 	}
 
-	public void print() {
-		Node node = start;
-
-		while (node.next != null) {
-			System.out.println(node.data);
-			node = node.next;
-		}
-		System.out.println(node.data);
-	}
-	public static void main(String[] args) {
-
-		Linklist list = new Linklist();
-		list.append(1);
-		list.append(4);
-		list.append(2);
-		list.append(1);
-		list.append(3);
-		list.append(6);
-		list.append(8);
-		list.print();
-		System.out.println("");
-		list.insert(2, 55);
-		list.print();
-		System.out.println("");
-		list.delete(3);
-
-		list.print();
+	public static void main(String [] args) { 
+		linklist lin = new linklist();
+		
 	}
 }
