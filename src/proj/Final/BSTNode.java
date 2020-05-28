@@ -1,7 +1,9 @@
-package proj;
+package end_proj;
 
 import java.io.*;
-
+/*
+ * This BST will store the results of the Huffman Compression for iterating and decoding..
+ */
 public class BSTNode {
 	class BNode {
 		String value;
@@ -50,6 +52,11 @@ public class BSTNode {
 		}
 		return null;
 	}
+	
+			/*
+			 *  The encode funtion will use the initial created char[] and a output file location
+			 *  Using the BST we call the search function to search for the char in the BST and write the huffman code to a newfile.
+			 */
 
 	public void encode(char[] c, String f) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(f));
