@@ -31,6 +31,6 @@ Preprocess a text file (allow only alphabets to remain, filter all other charact
 					
 						Result:
 						
-We loaded a text file (Case1.txt) containing texts from Wikipedia which include various Special Charecters and Numbers.
+	We loaded a text file (Case1.txt) containing texts from Wikipedia which include various Special Charecters and Numbers.
 * Size of the Original File is: 18.7802734375 KiloBytes for Ascii
 * Size of the Compressed/Encoded File is: 0.5770263671875 KiloBytes for Huffman Compression
