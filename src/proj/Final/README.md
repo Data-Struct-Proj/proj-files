@@ -9,9 +9,9 @@ Preprocess a text file (allow only alphabets to remain, filter all other charact
 * A Text File is read character by character and stored in a character Array.
 * A Binary Search Tree is generated and the character array is fed in as the input.
 * As the characters repeat the BST's Nodes will increment the frequency of the character 
-	-> When the char is read we will search the whole BST and if the char exists we increment otherwise we create a new node for this char.
+	**When the char is read we will search the whole BST and if the char exists we increment otherwise we create a new 	     node for this char.
 * We create a Node Array to store the Frequency and the Character.
-*Using a MaxHeap we Implement the Huffman Algorithm and store the corresponding result in another BST.
-*For DeCoding, the compressed file is given as the input along with the BST.
-*The corresponding encoded/compressed file is retrieved without any loss other than special characters.
+* Using a MaxHeap we Implement the Huffman Algorithm and store the corresponding result in another BST.
+* For DeCoding, the compressed file is given as the input along with the BST.
+* The corresponding encoded/compressed file is retrieved without any loss other than special characters.
 
