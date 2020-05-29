@@ -46,8 +46,8 @@ Preprocess a text file (allow only alphabets to remain, filter all other charact
 	
 We loaded a Image file (tr1.jpg)
 
-Size : 81.04 KiloBytes (Image)
-Size of the encoded text file is: 649.27734375 KiloBytes (Ascii)
-Size of the Compressed text file is: 13.5074462890625 KiloBytes (Huffman Compression)
+Size : 81.04 KiloBytes (Image) \n
+Size of the encoded text file is: 649.27734375 KiloBytes (Ascii) \n
+Size of the Compressed text file is: 13.5074462890625 KiloBytes (Huffman Compression) \n
 
 After decompressing , we obtained the orginal image of the same size without any loss.
