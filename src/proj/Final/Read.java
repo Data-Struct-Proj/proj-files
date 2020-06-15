@@ -14,7 +14,7 @@ public class Read {
 	int c = 0;
 	int i=0;
     String e;
-	Node[] cc = new Node[28];
+	Node[] cc = new Node[80];
 	public HuffmanMaxHeap.Node[] h;
 
 	// A function is created to check for alphabets and specified special Chars...
