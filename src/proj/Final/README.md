@@ -32,8 +32,8 @@ Preprocess a text file (allow only alphabets to remain, filter all other charact
 						   Result:
 						
 	We loaded a text file (Case1.txt) containing texts from Wikipedia which include various Special Charecters and Numbers.
-* Size of the Original File is: 18.7802734375 KiloBytes for Ascii
-* Size of the Compressed/Encoded File is: 0.5770263671875 KiloBytes for Huffman Compression
+* Size of the Original File is: 4.7802734375 KiloBytes for Ascii
+* Size of the Compressed/Encoded File is: 2.6770263671875 KiloBytes for Huffman Compression
 
 						  Innovation :
 	
@@ -47,7 +47,7 @@ Preprocess a text file (allow only alphabets to remain, filter all other charact
 * We loaded a Image file (tr1.jpg)
 
 * Size : 81.04 KiloBytes (Image) 
-* Size of the encoded text file is: 649.27734375 KiloBytes (Ascii) 
-* Size of the Compressed text file is: 13.5074462890625 KiloBytes (Huffman Compression) 
+* Size of the encoded text file is: 108.27734375 KiloBytes (Ascii) 
+* Size of the Compressed text file is: 81.5074462890625 KiloBytes (Huffman Compression) 
 
 * After decompressing , we obtained the orginal image of the same size without any loss.
