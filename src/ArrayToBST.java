@@ -1,4 +1,4 @@
-package DS_Project;
+
 public class ArrayToBST {
 	class Node {
 		int frq;

@@ -63,16 +63,17 @@ public class Decode {
 
 
 	public static void main(String[] args) throws IOException {
-		Read n = new Read();Read r = new Read();
-		
+		Read n = new Read(0);
+	    long startTime = System.currentTimeMillis();
 		String l = "/Users/rohith/Desktop/Case1.txt";
-		String l1 = "/Users/rohith/Desktop/Case2.txt";
-		
-	    HuffmanMaxHeap.Node[] a = n.Encode(l); HuffmanMaxHeap.Node[] b = r.Encode(l1);
-	    Decode f = new Decode();Decode g = new Decode();
+		System.out.println("Huffman Codes : ");
+	    HuffmanMaxHeap.Node[] a = n.Encode(l); 
+	    System.out.println(("Runtime for Encoding : " + (System.currentTimeMillis() - startTime)+ " ms"));
+	    long startTime_1 = System.currentTimeMillis();
 	    
+	    Decode f = new Decode();
 	    f.decodeFile(a,n.loc());
-	    g.decodeFile(b,r.loc());
+	    System.out.println(("Runtime for Decoding : " + (System.currentTimeMillis() - startTime_1)+ " ms"));
 	    
 
 	}

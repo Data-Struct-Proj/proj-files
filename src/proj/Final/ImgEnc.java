@@ -22,7 +22,7 @@ public class ImgEnc {
 		PrintStream ps = new PrintStream(new FileOutputStream(l));
  		ps.println(B64);
  		ps.close();
- 		Read N = new Read();
+ 		Read N = new Read(2);
  	    HuffmanMaxHeap.Node[] A = N.Encode(l); 
  	    Decode F = new Decode();
  	    F.decodeFile(A,N.loc());
@@ -35,15 +35,14 @@ public class ImgEnc {
  				c+=ch1;	
  				cc++;
  		}
- 		System.out.println(cc);
  	   
  	    File image = new File(imagePath);
  		double bytes = image.length();
  		System.out.println("Size is: " +bytes/1024.0+ " KiloBytes (Image)");
  		String s1 = "/Users/rohith/Desktop/proj_output/Image.txt";
 		String s2 = "/Users/rohith/Desktop/proj_output/Image_Encoded.txt";
-		Compare r = new Compare(s2, s1);
-		r.read_write();
+		Compare r = new Compare(s1, s2);
+		r.read_write_1();
  		return c.substring(0, cc-2);
 	}
 	
@@ -76,7 +75,7 @@ public class ImgEnc {
 	  }
 	  
 		public static void main(String[] args) throws IOException {
-		    String imagePath = "/Users/rohith/Desktop/tr1.jpg";
+		    String imagePath = "/Users/rohith/Desktop/12.jpg";
 		    ImgEnc a=new ImgEnc(imagePath);
 		    String c=a.imgEncode();
 		    a.decoder(c, "/Users/rohith/Desktop/proj_output/Image_Dec.jpg");

@@ -151,7 +151,7 @@ public class HuffmanMaxHeap {
 			Node a = maxExtract();
 			Node b = maxExtract();
 			/* The Inversion method has to be re-applied while creating the root node */
-			Node P = new Node(d / ((d / a.frq) + (d / b.frq)), (a.chr));
+			Node P = new Node(d / ((d / a.frq) + (d / b.frq)), '~');
 			P.left = a;
 			P.right = b;
 			r = P;
@@ -184,8 +184,7 @@ public class HuffmanMaxHeap {
 	 */
 	public void printCode(Node root, String s) {
 
-		if (isLeaf(root) && (Character.isLetter(root.chr) || root.chr == ' ' || root.chr == '\n')) {
-
+		if (isLeaf(root) && Read.isAllowed(root.chr)) {
 			System.out.println(root.chr + ":" + s);
 			f.insert(root.chr, s);
 			return;

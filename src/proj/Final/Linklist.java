@@ -1,8 +1,6 @@
-package proj;
+package end_proj;
 
-import end_proj.linklist.Node;
-
-public class Linklist {
+public class linklist {
 	public class Node {
 		int data;
 		Node next;
@@ -23,18 +21,6 @@ public class Linklist {
 			}
 			n.next = node;
 		}
-	}
-	
-	public float com_bits(){
-		float count=0;
-		for(Node p = start; p!= null; p = p.next) { 
-			
-					count+=1;	
-		
-		
-	}
-		count/=8;
-		return count;
 	}
 
 	public void insert(int index, int data) {
@@ -70,7 +56,14 @@ public class Linklist {
 			n1 = null;
 		}
 	}
-
+	
+	public double com_bits(){
+		double count=0;
+		for(Node p = start; p!= null; p = p.next) { 
+			count+=1;	
+	}
+		return count/8;
+	}
 	public void print() {
 		Node node = start;
 
@@ -80,23 +73,5 @@ public class Linklist {
 		}
 		System.out.println(node.data);
 	}
-	public static void main(String[] args) {
 
-		Linklist list = new Linklist();
-		list.append(1);
-		list.append(4);
-		list.append(2);
-		list.append(1);
-		list.append(3);
-		list.append(6);
-		list.append(8);
-		list.print();
-		System.out.println("");
-		list.insert(2, 55);
-		list.print();
-		System.out.println("");
-		list.delete(3);
-
-		list.print();
-	}
 }

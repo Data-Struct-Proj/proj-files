@@ -60,10 +60,15 @@ public class BSTNode {
 
 	public void encode(char[] c, String f) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+		FileOutputStream fos = new FileOutputStream(f);
+		BufferedOutputStream bos = new BufferedOutputStream(fos);
+		DataOutputStream w = new DataOutputStream(bos);
 		for (int i = 0; i < c.length; i++) {
 			if (search(root, c[i]) != null)
 				writer.write(search(root, c[i]));
+				//w.writeBytes(search(root, c[i]));
 		}
 		writer.close();
+		w.close();
 	}
 }

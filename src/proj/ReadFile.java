@@ -1,4 +1,4 @@
-package test;
+package proj;
 import java.io.*;
 public class ReadFile {
 	public boolean isAlpha(char s) {
