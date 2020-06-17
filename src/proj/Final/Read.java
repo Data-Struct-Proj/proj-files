@@ -10,22 +10,35 @@ public class Read {
      * count is the pointer variable of the char[]
      * i is the pointer variable of Node Array.
      */
+	
 	int count;
 	int c = 0;
 	int i=0;
+	static int choice;
     String e;
 	Node[] cc = new Node[80];
 	public HuffmanMaxHeap.Node[] h;
+	
+	public Read(int a) {
+	choice = a;
+	}
 
 	// A function is created to check for alphabets and specified special Chars...
-	public boolean isAllowed(char s) {
-		return Character.isLetter(s)|| s == ' ' || s == '\n';
+	public static boolean isAllowed(char s) {
+		if(choice ==0) return Character.isLetter(s);
+		
+		else if (choice==1) {
+		return Character.isLetter(s)|| s == ' ' || s == '\n' ||Character.isDigit(s);
+		}
+		else return true;
 	}
+	
 	public boolean isAlpha(char s) {
 		return Character.isLetter(s);
 	}
 
-	/* A function to read the original file char by char and stores 
+	/*
+	 * A function to read the original file char by char and stores 
 	 * every char in a char[] array
 	 * We used an iterator and a reader ; 
 	 * An iterator to count the no. of char which makes it easy to initialise the char[]
@@ -115,6 +128,7 @@ public class Read {
 	 * Since the Huffman Algorithm neccesitates the removal of minimum frequency from the Data Structure and form further trees.
 	 * Since we are using a Max heap and we need a min value we developed a method to invert the max values to min and vice-versa.
 	 */
+	
 	private Node[] traverse(Node root) {
 		if (root != null) {
 			traverse(root.left);
@@ -189,6 +203,7 @@ public class Read {
 	 * it occurs in the char[] 
 	 * the output is a BST Set of Nodes with char,hashCode of char and frequency.
 	 */
+	
 	public void readArray(char[] c) {
 		Node temp;
 		for (int i = 0; i < count; i++) {
@@ -200,9 +215,11 @@ public class Read {
 			}
 		}
 	}
+	
 	/* A function to all all the above defined function in a progressive way..
 	 * The BST built is broken down to a Node[] which consists of char,hashCode of char and frequency.
 	 */
+	
 	public Node[] fromBSTtoNodeArray(String a) throws IOException {
 		readArray(read(a));
 		return convertToArray();
@@ -213,6 +230,7 @@ public class Read {
 	 * to the Huffman Algorithm.
 	 * The Node array created in the above step will be converted to a HuffmanMaxHeap.
 	 */
+	
 	public HuffmanMaxHeap fromNodeArraytoMaxHeap(Node[] a) {
 		HuffmanMaxHeap A = new HuffmanMaxHeap(a.length);
 		A.fromNodeArray(a);
@@ -236,9 +254,11 @@ public class Read {
 		f.encode(read(loc), "/Users/rohith/Desktop/proj_output/"+e+"_Encoded.txt");
 		return h;
 	}
+	
 	public String loc() {
 		return e;
 	}
+	
 	public BSTNode want_BST() {
 		return HuffmanMaxHeap.want_BST();
 	}
