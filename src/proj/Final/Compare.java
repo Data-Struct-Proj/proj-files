@@ -18,10 +18,9 @@ public class Compare {
 	 */
 	
 	@SuppressWarnings({ "resource", "unused" })
-	public void read_write() throws IOException {
+	public void read_write_1() throws IOException {
 		
-		BufferedReader br = new BufferedReader(new FileReader(new File(l1)));
-
+		File br = new File(l1);
 		BufferedReader br1 = new BufferedReader(new FileReader(new File(l2)));
 		
 		linklist l = new linklist();
@@ -29,15 +28,12 @@ public class Compare {
 		int r, r1;
 		double c=0;
 		
-		while ((r = br.read()) != -1) {
-			c+=1;
-		}
 		
 		while ((r1 = br1.read()) != -1) {
-			l.append(r1);
+			c+=1;
 		}
-		System.out.println("Size is: " + c / 1024.0 + " KiloBytes for Ascii");
-		System.out.println("Size is: " + l.com_bits() / 1024.0 + " KiloBytes for Huffman Compression");
+		System.out.println("Size is: " + br.length() / 1024.0 + " KiloBytes for Ascii");
+		System.out.println("Size is: " + c *0.000125 + " KiloBytes for Huffman Compression");
 		System.out.println("");
 	}
 	
@@ -45,35 +41,14 @@ public class Compare {
 		return Character.isLetter(s);
 	}
 	
-	@SuppressWarnings("resource")
-	public void rel(String loc1,String loc2) throws IOException {
-		 Read n = new Read();
-		 n.Encode(loc1);
-		 BSTNode aa = n.want_BST();
-		 BufferedReader br = new BufferedReader(new FileReader(new File(loc2)));
-		 BufferedReader br1 = new BufferedReader(new FileReader(new File(loc1)));
-		 int r,r1;
-		 String c1="",c2="",tt="";
-			while ((r = br.read()) != -1) {
-				if(aa.search(aa.root,(char)r)!=null && isAlpha((char)r)) c1+=aa.search(aa.root,(char)r);	
-				else c1+='0';
-			}
-			while ((r1 = br1.read()) != -1) {
-				if(aa.search(aa.root,(char)r1)!=null && isAlpha((char)r1)) c2+=aa.search(aa.root,(char)r1);	
-				else c2+='0';
-			}
-			System.out.println(c2.charAt(32));
-			for(int i=0;i<c1.length();i++) {
-			tt+= (char) (c1.charAt(i)^c2.charAt(i));
-			}
-			System.out.println(tt);
-	}
 	
 	public static void main(String[] args) throws IOException {
-		String s1 = "/Users/rohith/Desktop/Case1_Encoded.txt";
-		String s2 = "/Users/rohith/Desktop/Case1.txt";
-		Compare c = new Compare(s1, s2);
-		c.read_write();
+	
+		String ss = "/Users/rohith/Desktop/Case1.txt";
+		String ss1 = "/Users/rohith/Desktop/proj_output/Case1_Encoded.txt";
+		
+		Compare c1 = new Compare(ss, ss1);
+		c1.read_write_1();
 		
 	}
 }
