@@ -24,6 +24,9 @@ public class FileLoader {
 		int i=Integer.parseInt(str);
 		Read n = new Read(i);
 		long startTime = System.currentTimeMillis();
+		System.out.println("");
+		System.out.println("Huffman Code :");
+		System.out.println("");
 		HuffmanMaxHeap.Node[] a = n.Encode(loc); 
 	    System.out.println(("Runtime for Encoding : " + (System.currentTimeMillis() - startTime)+ " ms"));
 	    long startTime_1 = System.currentTimeMillis();
